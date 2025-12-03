@@ -82,6 +82,7 @@ BRIEF generates a compact binary descriptor for each keypoint.
 This combination of FAST, orientation assignment, and BRIEF enables ORB to provide fast, rotation-invariant, and reliable feature detection suitable for UAV video stabilization.
 
 ![image alt](https://github.com/SimarSaka/Industrial_Training/blob/main/WhatsApp%20Image%202025-12-04%20at%201.42.46%20AM.jpeg?raw=true)
+![image alt]()
 
 ### 📌  2. Region-Based Feature Filtering
 
@@ -105,6 +106,8 @@ Process summary:
 - Create a binary mask that isolates water regions, which are then removed from feature detection.
 
 This ensures that reflections, ripples, and brightness changes do not introduce false keypoints.
+![image alt]()
+![image alt]()
 
 ---
 
@@ -145,6 +148,7 @@ To ensure accurate motion estimation, only features belonging to stable, non-mov
    `mask = motion_magnitude < threshold`
 
 This process removes points on moving vehicles, swaying trees, and reflective water, ensuring only true background features remain.
+![image alt]()
 
 ### Why Not RANSAC?
 RANSAC relies purely on geometric consistency and may retain unstable matches, especially in scenes with heavy foreground movement.  
@@ -170,6 +174,7 @@ These actions introduce noticeable perspective changes, such as roads narrowing 
 
 A homography matrix models all these effects, making it ideal for aerial video stabilization.  
 In contrast, an Affine transformation (with only 6 parameters) assumes a flat scene and cannot capture depth or perspective changes, making it less suitable for real-world UAV footage.
+![image alt]()
 
 ---
 
@@ -183,6 +188,7 @@ Once homographies are computed for each pair of consecutive frames, we can recon
 - The result is a complete trajectory showing how the camera moved over time (left-right, up-down, tilt, zoom, and other motions).
 
 This trajectory forms the basis for stabilization and later smoothing.
+![image alt]()
 
 ---
 
@@ -202,6 +208,8 @@ This prevents oversmoothing and preserves natural camera movement such as steady
 Kalman filtering works well for predictable, smooth motion.  
 However, UAV motion is highly irregular due to wind, swaying trees, moving vehicles, and water reflections.  
 Kalman predictions can become unreliable under such variability, making adaptive smoothing a more effective choice.
+![image alt]()
+![image alt]()
 
 ---
 
@@ -229,6 +237,7 @@ Using OpenCV’s `cv2.warpPerspective()`:
 - Each frame is corrected to remove jitter and unwanted movement.
 
 This step produces visually stable frames while preserving scene geometry.
+![image alt]()
 
 ---
 
@@ -240,6 +249,7 @@ This pipeline achieved a **57% reduction in overall motion**, a strong result gi
 
 The performance is comparable to commercial tools such as Adobe Premiere Pro’s Warp Stabilizer.  
 However, this approach is more specifically tuned for UAV footage, making it potentially more effective for aerial scenes with complex multi-layered motion.
+![image alt]()
 
 
 
