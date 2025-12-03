@@ -81,7 +81,7 @@ BRIEF generates a compact binary descriptor for each keypoint.
 
 This combination of FAST, orientation assignment, and BRIEF enables ORB to provide fast, rotation-invariant, and reliable feature detection suitable for UAV video stabilization.
 
-![image alt]()
+![image alt](https://github.com/SimarSaka/Industrial_Training/blob/main/WhatsApp%20Image%202025-12-04%20at%201.42.46%20AM.jpeg?raw=true)
 
 ### 📌  2. Region-Based Feature Filtering
 
